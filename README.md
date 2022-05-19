@@ -1,16 +1,9 @@
-# message_app_ui
+Chat APP UI 
+( 2 screens )
 
-A new Flutter project.
+* Written code and all parts allowed for use without any fee or mention of the author. *
 
-## Getting Started
+- To move to the next screen, simply click on one of the "Recent conversations".
+- If after downloading the project in some cases there is no "asset" folder within the project, you can download it at the link: " https://mega.nz/folder/OcZVyLoZ#HBSh-OmJkbivNLLSEB_Xzg "
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image1](https://user-images.githubusercontent.com/89051381/169322875-5b097482-cb65-4c8a-8157-9e9e40be8176.jpeg)
