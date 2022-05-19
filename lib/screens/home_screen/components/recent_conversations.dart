@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:message_app_ui/models/chat_list_messages_model.dart';
+import 'package:message_app_ui/screens/chat_screen/chat_screen.dart';
 
 import '../../../app/app_constatns.dart';
 import '../../../dummy_data.dart';
@@ -36,9 +37,31 @@ class RecentConversationsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        radius: 25,
-        backgroundImage: AssetImage(chatListMessagesModel.userPhotoUrl),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: ((ctx) => const ChatScreen()),
+        ),
+      ),
+      leading: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          CircleAvatar(
+            radius: 25,
+            backgroundImage: AssetImage(chatListMessagesModel.userPhotoUrl),
+          ),
+          Positioned(
+            child: CircleAvatar(
+              radius: 6,
+              backgroundColor: Colors.white,
+              child: CircleAvatar(
+                radius: 4,
+                backgroundColor: chatListMessagesModel.isUserActive
+                    ? AppColors.green
+                    : AppColors.grey,
+              ),
+            ),
+          ),
+        ],
       ),
       title: Padding(
         padding: const EdgeInsets.only(bottom: 5),

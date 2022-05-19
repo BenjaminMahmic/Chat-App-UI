@@ -26,12 +26,22 @@ class FriendsList extends StatelessWidget {
           SizedBox(
             height: 60,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: AppDummyData.friendsList.length,
               itemBuilder: (ctx, i) {
-                return FriendsListCard(
-                  friendsListModel: AppDummyData.friendsList[i],
-                );
+                return i == AppDummyData.friendsList.length - 1
+                    ? Padding(
+                        padding: i == AppDummyData.friendsList.length - 1
+                            ? const EdgeInsets.only(right: 15)
+                            : const EdgeInsets.all(0),
+                        child: FriendsListCard(
+                          friendsListModel: AppDummyData.friendsList[i],
+                        ),
+                      )
+                    : FriendsListCard(
+                        friendsListModel: AppDummyData.friendsList[i],
+                      );
               },
             ),
           )

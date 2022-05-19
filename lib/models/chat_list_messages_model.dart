@@ -4,6 +4,7 @@ class ChatListMessagesModel {
   final String message;
   final DateTime messageTime;
   final int newMessages;
+  final bool isUserActive;
 
   ChatListMessagesModel({
     required this.userPhotoUrl,
@@ -11,5 +12,6 @@ class ChatListMessagesModel {
     required this.message,
     required this.messageTime,
     this.newMessages = 0,
+    this.isUserActive = false,
   });
 }

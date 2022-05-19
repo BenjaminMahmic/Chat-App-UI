@@ -42,12 +42,20 @@ class StoryesList extends StatelessWidget {
           SizedBox(
             height: 200,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: AppDummyData.storyList.length,
               itemBuilder: (ctx, i) {
-                return StoryCard(
-                  storyModel: AppDummyData.storyList[i],
-                );
+                return i == AppDummyData.storyList.length - 1
+                    ? Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: StoryCard(
+                          storyModel: AppDummyData.storyList[i],
+                        ),
+                      )
+                    : StoryCard(
+                        storyModel: AppDummyData.storyList[i],
+                      );
               },
             ),
           ),
@@ -67,50 +75,48 @@ class StoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: 90,
-        padding: const EdgeInsets.all(10),
-        margin: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(storyModel.storyPhotoUrl),
-            colorFilter: const ColorFilter.mode(
-              Colors.black26,
-              BlendMode.darken,
+    return Container(
+      width: 95,
+      padding: const EdgeInsets.only(left: 8, bottom: 5),
+      margin: const EdgeInsets.fromLTRB(10, 10, 0, 10),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(storyModel.storyPhotoUrl),
+          colorFilter: const ColorFilter.mode(
+            Colors.black26,
+            BlendMode.darken,
+          ),
+        ),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(.8),
+            blurRadius: 6,
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            storyModel.userName,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 16,
             ),
           ),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(.8),
-              blurRadius: 6,
+          Text(
+            storyModel.userSurname,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 16,
             ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              storyModel.userName,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
-            Text(
-              storyModel.userSurname,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -23,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: appBar(),
       body: const CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverSizedBox(height: 10),
           StoryesList(),
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: EdgeInsets.fromLTRB(15, 0, 0, 10),
               child: Text(
-                'Recent Conversation',
+                'Recent Conversations',
                 style: TextStyle(color: AppColors.grey),
               ),
             ),
@@ -85,11 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      actions: const [
+      actions: [
         Padding(
-          padding: EdgeInsets.only(right: 15),
-          child: Icon(
-            Icons.search,
+          padding: const EdgeInsets.only(right: 15),
+          child: SvgPicture.asset(
+            'assets/svg/search.svg',
+            height: 24,
+            width: 24,
             color: AppColors.rose,
           ),
         ),
